@@ -18,18 +18,24 @@ class Api::V1::AccountController < ApplicationController
     time_line = client.user_timeline(current_user.twitter_handle, {count: count})
     current_user.update(time_fetched: current_user.time_fetched+1)
     if time_line.class == Twitter::Error::NotFound
-      render json: {status: 404, success: false, message: 'Twitter handle or id not valid'}
+      render json: {status: 400, success: false, message: 'Twitter handle or id not valid'}
     else
       render json: {status: 200, success: true, message: 'Success', data: time_line.map{|a| a.text}.as_json}
     end
 
-
-
   rescue => e
     Rails.logger.error "account_controller#latest_tweets - Error: #{e.message}"
-    render json: {status: 404, success: false, message: 'Unexpected error'}
+    render json: {status: 500, success: false, message: 'Unexpected error'}
   end
 
+  # give a summary of handles and times fetched
+  def usage_data
+    usage_data = User.all.select(:time_fetched, :twitter_handle).to_json
+    render json: {status: 200, success: true, message: 'Success', data: usage_data}
+  rescue => e
+    Rails.logger.error "account_controller#usage_data - Error: #{e.message}"
+    render json: {status: 500, success: false, message: 'Unexpected error'}
+  end
 
 
   private

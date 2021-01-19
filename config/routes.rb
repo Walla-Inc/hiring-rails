@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       resource :account, only: [:show, :update], controller: :account do
         collection do
           get 'latest_tweets'
+          get 'usage_data'
         end
       end
     end
