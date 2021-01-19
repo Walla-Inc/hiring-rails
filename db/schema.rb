@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_18_220612) do
+ActiveRecord::Schema.define(version: 2021_01_19_215430) do
 
   create_table "users", force: :cascade do |t|
     t.string "first_name"
@@ -24,6 +24,8 @@ ActiveRecord::Schema.define(version: 2021_01_18_220612) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "twitter_handle", default: "", null: false
+    t.integer "time_fetched", default: 0, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
