@@ -3,7 +3,12 @@
 Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
-      resource :account, only: [:show, :update], controller: :account
+      resource :account, only: [:show, :update], controller: :account do
+        collection do
+          get 'retrieve_tweets'
+          get 'twitter_handles'
+        end
+      end
     end
   end
 

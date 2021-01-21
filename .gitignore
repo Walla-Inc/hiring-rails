@@ -23,6 +23,7 @@ config/credentials/development.key
 config/credentials/test.key
 config/credentials/staging.key
 config/credentials/production.key
+config/application.yml
 
 # Only include if you have production secrets in this file, which is no longer a Rails default
 # config/secrets.yml
