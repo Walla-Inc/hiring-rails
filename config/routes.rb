@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resource :account, only: [:show, :update], controller: :account
       resources :tweets, only: [:index]
+      resources :twitter_handles, only: [:index]
     end
   end
 
