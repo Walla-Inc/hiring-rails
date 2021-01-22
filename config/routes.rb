@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resource :account, only: [:show, :update], controller: :account
+      resources :twitter_handles, only: [:index, :show]
     end
   end
 
