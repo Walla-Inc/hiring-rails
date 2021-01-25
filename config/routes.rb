@@ -1,9 +1,13 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+
   namespace :api do
     namespace :v1 do
-      resource :account, only: [:show, :update], controller: :account
+      resource :account, only: [:show, :update], controller: :account do
+        get :tweets
+        get :twitter_handles
+      end
     end
   end
 
@@ -17,4 +21,7 @@ Rails.application.routes.draw do
                sessions: 'api/v1/sessions'
              },
              defaults: { format: :jsonapi }
+
+
+  root to: "home#index"
 end
