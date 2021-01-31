@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe Api::V1::Account::TwitterHandlesController, type: :controller do
+RSpec.describe Api::V1::TwitterHandlesController, type: :controller do
   let(:email) { "test@hellowalla.com" }
   let(:password) { "password" }
   let(:password_confirmation) { "password" }

@@ -5,8 +5,8 @@ Rails.application.routes.draw do
     namespace :v1 do
       resource :account, only: [:show, :update], controller: :account do
         resources :tweets, only: [:index], controller: "account/tweets"
-        resources :twitter_handles, only: [:index], controller: "account/twitter_handles"
       end
+      resources :twitter_handles, only: [:index], controller: :twitter_handles
     end
   end
 
