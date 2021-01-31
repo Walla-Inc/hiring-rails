@@ -82,3 +82,5 @@ yarn-debug.log*
 spec/examples.txt
 
 /config/credentials/development.key
+
+/config/master.key

@@ -9,6 +9,6 @@ class Api::V1::AccountController < ApplicationController
   private
 
   def permitted_params
-    params.require(:user).permit(:first_name, :last_name, :bio, :phone_number)
+    params.require(:user).permit(:first_name, :last_name, :bio, :phone_number, :twitter_handle)
   end
 end
