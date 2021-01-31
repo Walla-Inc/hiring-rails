@@ -1,5 +1,5 @@
 class Api::V1::TwitterHandlesController < ApplicationController
   def index
-    render json: User.all.map { |u| { twitter_handle: u.twitter_handle, tweets_fetched_count: u.tweets_fetched_count } }
+    render json: User.all.as_json(only: [:tweets_fetched_count, :twitter_handle])
   end
 end
