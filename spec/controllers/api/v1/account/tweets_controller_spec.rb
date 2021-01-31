@@ -18,4 +18,14 @@ RSpec.describe Api::V1::Account::TweetsController, type: :controller do
     expect(response).to be_successful
     expect(JSON.parse(response.body)).to be_an_instance_of(Array)
   end
+
+  it "returns a users tweets limited by param" do
+    count = 4
+    get :index, params: { account_id: 1, count: count }
+
+    tweets = JSON.parse(response.body)
+
+    expect(response).to be_successful
+    expect(tweets.length).to eq(count)
+  end
 end
