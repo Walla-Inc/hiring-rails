@@ -11,4 +11,8 @@ class Api::V1::AccountController < ApplicationController
   def permitted_params
     params.require(:user).permit(:first_name, :last_name, :bio, :phone_number, :twitter_handle)
   end
+
+  def find_account
+    @account ||= User.find_by(params[:account_id])
+  end
 end

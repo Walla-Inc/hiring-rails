@@ -28,4 +28,12 @@ RSpec.describe Api::V1::Account::TweetsController, type: :controller do
     expect(response).to be_successful
     expect(tweets.length).to eq(count)
   end
+
+  it "should increment tweets_fetched_count on user" do
+    tweets_fetched_count = user.tweets_fetched_count
+    get :index, params: { account_id: user.id }
+    expect(response).to be_successful
+    user.reload
+    expect(user.tweets_fetched_count).to eq(tweets_fetched_count + 1)
+  end
 end
